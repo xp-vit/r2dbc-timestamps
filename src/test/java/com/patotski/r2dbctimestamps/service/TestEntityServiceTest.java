@@ -29,7 +29,7 @@ class TestEntityServiceTest {
                 .extracting(TestEntity::getId,
                         TestEntity::getTimestamp_without_tz,
                         TestEntity::getTimestamp_with_tz)
-                .containsExactly(1, now, now);
+                .containsExactly(saved.getId(), now, now);
     }
 
     @Test

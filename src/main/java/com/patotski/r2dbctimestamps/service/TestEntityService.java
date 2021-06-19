@@ -25,11 +25,15 @@ public class TestEntityService {
         return testEntityRepo.findById(id);
     }
 
-    public Mono<Void> saveUsingDbClient(TestEntity entity) {
+    public Mono<TestEntity> saveUsingDbClient(TestEntity entity) {
         return databaseClient.sql("INSERT INTO test_table (timestamp_without_tz, timestamp_with_tz) VALUES(:timestamp_without_tz, :timestamp_with_tz)")
                 .bind("timestamp_without_tz", entity.getTimestamp_without_tz())
                 .bind("timestamp_with_tz", entity.getTimestamp_with_tz())
-                .then();
+                .map(row -> TestEntity.builder()
+                        .id(row.get("id", Integer.class))
+                        .timestamp_with_tz(row.get("timestamp_with_tz", Instant.class))
+                        .timestamp_without_tz(row.get("timestamp_without_tz", Instant.class))
+                        .build()).first();
     }
 
     public Mono<TestEntity> getByIdFromDbClient(int id) {
