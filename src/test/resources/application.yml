@@ -1,0 +1,7 @@
+spring:
+  r2dbc:
+    url: r2dbc:tc:postgresql:///test_db?TC_IMAGE_TAG=12.2
+r2dbc:
+  migrate:
+    resources-paths:
+      - classpath:/db/migration/*.sql

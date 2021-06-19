@@ -1,0 +1,1 @@
+CREATE TABLE test_table (id SERIAL PRIMARY KEY, timestamp_without_tz TIMESTAMP, timestamp_with_tz TIMESTAMP WITH TIME ZONE);
