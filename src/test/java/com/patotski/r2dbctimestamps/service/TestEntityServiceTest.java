@@ -2,6 +2,7 @@ package com.patotski.r2dbctimestamps.service;
 
 import com.patotski.r2dbctimestamps.domain.TestEntity;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,7 @@ class TestEntityServiceTest {
     TestEntityService testEntityService;
 
     @Test
+    @DisplayName("Should store and retrieve Entity with both timestamp fields in correct timezones using R2DBC repo.")
     void shouldStoreCorrectTimestampsAndRetriveWithRepo() {
         Instant now = Instant.now();
         TestEntity entity = TestEntity.builder()
@@ -33,6 +35,7 @@ class TestEntityServiceTest {
     }
 
     @Test
+    @DisplayName("Should store and retrieve Entity with both timestamp fields in correct timezones using R2DBC DatabaseClient.")
     void shouldStoreCorrectTimestampsAndRetriveWithDbClient() {
         Instant now = Instant.now();
         TestEntity entity = TestEntity.builder()
