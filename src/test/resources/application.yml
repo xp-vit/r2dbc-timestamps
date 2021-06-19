@@ -1,6 +1,6 @@
 spring:
   r2dbc:
-    url: r2dbc:tc:postgresql:///test_db?TC_IMAGE_TAG=12.2
+    url: r2dbc:tc:postgresql:///test_db?TC_IMAGE_TAG=12.7
 r2dbc:
   migrate:
     resources-paths:
